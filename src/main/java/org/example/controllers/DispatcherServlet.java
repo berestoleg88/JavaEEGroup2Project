@@ -4,7 +4,9 @@ import org.example.dao.DAOFactory;
 import org.example.dao.DBType;
 import org.example.entities.ProcessorResult;
 import org.example.processors.Processor;
+import org.example.processors.ProcessorLogOut;
 import org.example.processors.ProcessorMainPage;
+import org.example.processors.ProcessorShowAllStudents;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +25,8 @@ public class DispatcherServlet extends HttpServlet {
         super.init();
         DAOFactory daoFactory = DAOFactory.getDAOFactory(DBType.ORACLE);
         processorList.add(new ProcessorMainPage(daoFactory));
+        processorList.add(new ProcessorShowAllStudents(daoFactory));
+        processorList.add(new ProcessorLogOut());
     }
 
     @Override
